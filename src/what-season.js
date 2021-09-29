@@ -1,10 +1,5 @@
 import { NotImplementedError } from '../extensions/index.js';
-const dictionary = {
-  0: 'winter',
-  1: 'spring',
-  2: 'summer',
-  3: 'autumn'
-}
+
 
 /**
  * Extract season from given date and expose the enemy scout!
@@ -18,6 +13,12 @@ const dictionary = {
  * 
  */
 export default function getSeason(date) {
+  const dictionary = {
+    0: 'winter',
+    1: 'spring',
+    2: 'summer',
+    3: 'autumn'
+  }
   if (!date) {
     return 'Unable to determine the time of year!'
   }
@@ -29,12 +30,11 @@ export default function getSeason(date) {
     throw new Error('Invalid date!')
   }
   try {
-    date.UTC()
+    date.toTimeString()
   } catch {
     throw new Error('Invalid date!')
   }
+
   let seasonNumber = Math.floor(((date.getMonth() + 1) % 12) / 3)
   return dictionary[seasonNumber]
 }
-
-console.log(getSeason(new Date(2020, 5, 31)))
