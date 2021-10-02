@@ -1,8 +1,9 @@
 import { NotImplementedError } from '../extensions/index.js';
 
+
 /**
  * Implement class DepthCalculator with method calculateDepth
- * that calculates deoth of nested array
+ * that calculates depth of nested array
  * 
  * @example
  * 
@@ -14,13 +15,14 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default class DepthCalculator {
   calculateDepth(arr) {
-    let count = 0;
-    for (el of arr) {
-      count += 1
+    let depth = 1;
+    for (let el of arr) {
       if (Array.isArray(el)) {
-        count += deepCount(el)
+        depth = Math.max(depth, this.calculateDepth(el) + 1)
       }
     }
-    return count
+    return depth
   }
 }
+
+
