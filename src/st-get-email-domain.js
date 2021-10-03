@@ -17,5 +17,3 @@ export default function getEmailDomain(email) {
     }
   }
 }
-
-console.log(getEmailDomain('very.unusual.@.unusual.com@usual.com'))
